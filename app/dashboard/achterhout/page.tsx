@@ -8,9 +8,7 @@ export default function ThreeJsScene() {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    // Get the <div> element where the scene will be displayed
     const container = containerRef.current; // Accessing the current value of the ref
-    // Initialize the basic components needed to use this library
     const components = new OBC.Components();
 
     if (container !== null) {
@@ -27,17 +25,7 @@ export default function ThreeJsScene() {
     const scene = components.scene.get();
     scene.background = new THREE.Color('white');
 
-    //components.camera.controls.setLookAt(10, 10, 10, 0, 0, 0); //zorgt voor de zoom
-
-    //const grid = new OBC.SimpleGrid(components);
-
-    //const boxMaterial = new THREE.MeshStandardMaterial({ color: '#BCF124' });
-    //const boxGeometry = new THREE.BoxGeometry(3, 3, 3);
-    //const cube = new THREE.Mesh(boxGeometry, boxMaterial);
-    //cube.position.set(0, 1.5, 0);
-    //scene.add(cube);
-
-    //components.scene.setup(); //staat uit, zorgt voor verlichting
+    (components.camera as any).controls.setLookAt(4, 4, 4, 0, 0, 0); //zorgt voor de zoom
     (components.scene as any).setup();
 
     //IFCs importeren
@@ -47,16 +35,12 @@ export default function ThreeJsScene() {
     fragmentIfcLoader.settings.webIfc.COORDINATE_TO_ORIGIN = true;
     fragmentIfcLoader.settings.webIfc.OPTIMIZE_PROFILES = true;
 
-    //const mainToolbar = new OBC.Toolbar(components, {
-    //  name: 'Main Toolbar',
-    //  position: 'bottom',
-    //});
-    //components.ui.addToolbar(mainToolbar);
-    //const ifcButton = fragmentIfcLoader.uiElement.get('main');
-    //mainToolbar.addChild(ifcButton);
-
     // Load IFC fragments
-    loadIfcAsFragments(scene, fragmentIfcLoader);
+    loadIfcAsFragments(
+      scene,
+      fragmentIfcLoader,
+      '/Fascinatio 1A MIR Achterhout_31-03-2024 17-37-25.ifc',
+    );
 
     // Clean up function
     return () => {
@@ -85,10 +69,9 @@ export default function ThreeJsScene() {
 async function loadIfcAsFragments(
   scene: THREE.Scene,
   fragmentIfcLoader: OBC.FragmentIfcLoader,
+  link: string,
 ) {
-  const file = await fetch(
-    '/Fascinatio 1A MIR Achterhout_31-03-2024 17-37-25.ifc',
-  );
+  const file = await fetch(link);
   console.log(file);
   const data = await file.arrayBuffer();
   const buffer = new Uint8Array(data);
