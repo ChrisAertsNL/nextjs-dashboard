@@ -27,7 +27,7 @@ export default function ThreeJsScene() {
     const scene = components.scene.get();
     scene.background = new THREE.Color('white');
 
-    components.camera.controls.setLookAt(10, 10, 10, 0, 0, 0); //zorgt voor de zoom
+    //components.camera.controls.setLookAt(10, 10, 10, 0, 0, 0); //zorgt voor de zoom
 
     //const grid = new OBC.SimpleGrid(components);
 
@@ -37,7 +37,7 @@ export default function ThreeJsScene() {
     //cube.position.set(0, 1.5, 0);
     //scene.add(cube);
 
-    components.scene.setup();
+    //components.scene.setup(); //staat uit, zorgt voor verlichting
 
     //IFCs importeren
     let fragments = new OBC.FragmentManager(components);
