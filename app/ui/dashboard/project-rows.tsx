@@ -83,13 +83,13 @@ const projectData: Project[] = [
     type: '1A MIR',
     workstation: '02 IZI Achterhout',
     available: true,
-    href: '/dashboard/projects',
+    href: '/dashboard/achterhout',
   },
   {
     project: 'Fascinatio',
     type: '1A MIR',
     workstation: '03 IZI Gipsplaten',
-    available: true,
+    available: false,
     href: '/dashboard/projects',
   },
   {
