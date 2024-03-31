@@ -12,17 +12,22 @@ export default function ThreeJsScene() {
     const container = containerRef.current; // Accessing the current value of the ref
     // Initialize the basic components needed to use this library
     const components = new OBC.Components();
-    components.scene = new OBC.SimpleScene(components);
-    components.renderer = new OBC.SimpleRenderer(components, container);
-    components.camera = new OBC.SimpleCamera(components);
-    components.raycaster = new OBC.SimpleRaycaster(components);
+
+    if (container !== null) {
+      components.scene = new OBC.SimpleScene(components);
+      components.renderer = new OBC.SimpleRenderer(components, container);
+      components.camera = new OBC.SimpleCamera(components);
+      components.raycaster = new OBC.SimpleRaycaster(components);
+    } else {
+      console.error('Container is null. Cannot initialize renderer.');
+    }
 
     components.init();
 
     const scene = components.scene.get();
     scene.background = new THREE.Color('white');
 
-    components.camera.controls.setLookAt(10, 10, 10, 0, 0, 0);
+    components.camera.controls.setLookAt(10, 10, 10, 0, 0, 0); //zorgt voor de zoom
 
     //const grid = new OBC.SimpleGrid(components);
 
