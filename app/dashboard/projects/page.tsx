@@ -38,6 +38,7 @@ export default function ThreeJsScene() {
     //scene.add(cube);
 
     //components.scene.setup(); //staat uit, zorgt voor verlichting
+    (components.scene as any).setup();
 
     //IFCs importeren
     let fragments = new OBC.FragmentManager(components);
@@ -68,9 +69,17 @@ export default function ThreeJsScene() {
   return (
     <>
       <p>Fascinatio Workstation 01: Wedi</p>
-      <div ref={containerRef} />
+      <div
+        ref={containerRef}
+        style={{
+          width: '70vw',
+          height: '70vh',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      />
     </>
-  ); //style={{ width: '100%', height: '100%' }}
+  );
 }
 
 async function loadIfcAsFragments(
