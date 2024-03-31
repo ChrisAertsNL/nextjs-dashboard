@@ -68,11 +68,14 @@ export default function ThreeJsScene() {
   ); //style={{ width: '100%', height: '100%' }}
 }
 
-async function loadIfcAsFragments(scene, fragmentIfcLoader) {
+async function loadIfcAsFragments(
+  scene: THREE.Scene,
+  fragmentIfcLoader: OBC.FragmentIfcLoader,
+) {
   const file = await fetch('/Fascinatio_Wedi_31-03-2024 13-31-08.ifc');
   console.log(file);
   const data = await file.arrayBuffer();
   const buffer = new Uint8Array(data);
-  const model = await fragmentIfcLoader.load(buffer, 'example');
+  const model = await fragmentIfcLoader.load(buffer);
   scene.add(model);
 }
