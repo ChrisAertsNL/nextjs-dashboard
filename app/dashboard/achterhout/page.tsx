@@ -39,7 +39,7 @@ export default function ThreeJsScene() {
     loadIfcAsFragments(
       scene,
       fragmentIfcLoader,
-      '/Fascinatio 1A MIR Achterhout_31-03-2024 17-37-25.ifc',
+      '/Fascinatio 1A MIR Achterhout_31-03-2024 17-38-25.ifc',
     );
 
     // Clean up function

@@ -94,6 +94,6 @@ async function loadIfcAsFragments(
       child.add(wireframe);
     }
   });*/
-
+  close;
   scene.add(model);
 }
